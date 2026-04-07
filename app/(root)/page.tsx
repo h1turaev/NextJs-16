@@ -1,4 +1,4 @@
-import Home from "@/components/homepage/page";
+import Home from "@/_components/homepage/page";
 
 /**
  * `/` marshruti. Next.js 16: page.tsx — Server Component (default),
