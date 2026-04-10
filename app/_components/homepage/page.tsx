@@ -1,17 +1,16 @@
- export default async function Home() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/albums');
-  if (!response.ok) throw new Error('Failed to fetch posts');
+import HomeLanding from "./home-landing";
+import type { Album } from "./types";
 
-  const albums = await response.json();
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols">
-      {albums.map((album: { id: number, title: string }) => (
-        <div key={album.id} className="border p-4">
-          <h2 className="text-lg font-bold">{album.title}</h2>
-          <p className="text-sm text-gray-500">Album ID: {album.id}</p>
-        </div>
-      ))}
-    </div>
+export default async function Home() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/albums",
+    { next: { revalidate: 60 } },
   );
+  if (!response.ok) {
+    throw new Error("Failed to fetch albums");
+  }
+
+  const albums: Album[] = (await response.json()).slice(0, 10);
+
+  return <HomeLanding albums={albums} />;
 }

@@ -1,0 +1,57 @@
+.dark-veil {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(
+      120% 80% at 20% 10%,
+      rgba(110, 120, 255, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      110% 90% at 80% 0%,
+      rgba(120, 255, 190, 0.14),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #090a0f 0%, #07080c 55%, #05060a 100%);
+}
+
+.dark-veil::before,
+.dark-veil::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+}
+
+.dark-veil::before {
+  background:
+    radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.08), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(160, 170, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 55% 20%, rgba(120, 255, 200, 0.06), transparent 30%);
+  mix-blend-mode: screen;
+  filter: blur(28px);
+  animation: dark-veil-drift var(--dv-speed, 16s) linear infinite;
+  will-change: transform;
+}
+
+.dark-veil::after {
+  background-image: linear-gradient(
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 100% var(--dv-scanline-size, 8px);
+  opacity: var(--dv-scanline-opacity, 0);
+}
+
+@keyframes dark-veil-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 1%, 0) rotate(3deg) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+  }
+}

@@ -1,12 +1,5 @@
-import React from 'react'
+import type { ReactNode } from "react";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div>
-        <h1>Dashboard Navbar</h1>
-        {children}
-    </div>
-  )
+export default function DashboardLayout({ children }: { children: ReactNode }) {
+  return <div className="min-h-0 flex-1">{children}</div>;
 }
-
-export default Layout;
