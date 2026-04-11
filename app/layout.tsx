@@ -1,9 +1,8 @@
+import ClickSpark from "@/components/click-spark";
 import type { Metadata } from "next";
 import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
-import ClickSpark from "@/_components/click-spark";
-import GooeyNav from "@/_components/gooey-nav/gooey-nav";
+import LightRays from "./components/LighRays";
 import "./globals.css";
-
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
   subsets: ["latin"],
@@ -15,8 +14,8 @@ const martianMono = Martian_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js 16 App",
-  description: "Welcome to the Next.js 16 App",
+  title: "Dev Events",
+  description: "Next Gen Developers Event Hub",
 };
 
 export default function RootLayout({
@@ -29,30 +28,35 @@ export default function RootLayout({
       <body
         className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen font-sans antialiased`}
       >
-        <ClickSpark
-          sparkColor="#fff"
-          sparkSize={10}
-          sparkRadius={15}
-          sparkCount={8}
-          duration={400}
-          className="flex min-h-screen flex-col"
-        >
-          <GooeyNav
-            items={[
-              { label: "Home", href: "/" },
-              { label: "About", href: "/about" },
-              { label: "Contact", href: "/auth" },
-            ]}
-            particleCount={15}
-            particleDistances={[90, 10]}
-            particleR={100}
-            initialActiveIndex={0}
-            animationTime={600}
-            timeVariance={300}
-            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+        <div className="absolute top-0 left-0 w-full h-full min-h-screen">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#5dfec8"
+            raysSpeed={0.5}
+            lightSpread={2}
+            rayLength={3}
+            followMouse={true}
+            mouseInfluence={0.01}
+            noiseAmount={0}
+            distortion={0.01}
+            className="custom-rays"
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
           />
-          <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-        </ClickSpark>
+        </div>
+        <main>
+          <ClickSpark
+            sparkColor="#fff"
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+            className="flex min-h-screen flex-col"
+          >
+            {children}
+          </ClickSpark>
+        </main>
       </body>
     </html>
   );

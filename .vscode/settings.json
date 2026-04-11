@@ -1,5 +1,6 @@
 {
   "css.customData": [".vscode/tailwind-css-at-rules.json"],
+  "css.lint.unknownAtRules": "ignore",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsserver.maxTsServerMemory": 4096,

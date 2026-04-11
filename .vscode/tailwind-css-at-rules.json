@@ -28,6 +28,10 @@
     {
       "name": "@reference",
       "description": "Tailwind CSS v4: import variables without emitting CSS."
+    },
+    {
+      "name": "@apply",
+      "description": "Tailwind CSS: inline utility classes into custom CSS rules."
     }
   ]
 }
